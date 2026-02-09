@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "OnlyCoreKit",
+    platforms: [
+            .iOS(.v17)   // ← choose your minimum
+        ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -17,6 +20,9 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "OnlyCoreKit"
+//            resources: [
+//                .process("Resources")
+//            ]
         ),
 
     ]
