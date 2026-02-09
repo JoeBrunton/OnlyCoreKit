@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-enum Edge {
+public enum Edge {
     case top
     case bottom
     case all
@@ -23,7 +23,9 @@ enum Edge {
 /// The offCentre bool allows for a leading focused top fade,
 /// it is labelled @State to allow for more granular control over location
 ///
-struct BlurView: View {
+public struct BlurView: View {
+    
+    public init() {}
     
     var edge: Edge = .all
     @State var offCentre: Bool = false
@@ -31,7 +33,7 @@ struct BlurView: View {
     
     let UIBackground = UIColor.systemBackground
     
-    var body: some View {
+    public var body: some View {
         
         VStack {
             switch edge {

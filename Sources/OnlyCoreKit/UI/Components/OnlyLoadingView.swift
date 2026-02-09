@@ -7,11 +7,17 @@
 
 import SwiftUI
 
-struct OnlyLoadingView: View {
+
+/// Custom Loading Spinner
+///
+/// Uses the Only logo with spinning components
+public struct OnlyLoadingView: View {
+    
+    public init() {}
     
     @State private var isRotating = false
     
-    var body: some View {
+    public var body: some View {
         
         ZStack {
             
