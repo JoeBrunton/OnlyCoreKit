@@ -27,9 +27,9 @@ public struct BlurView: View {
     
     public init() {}
     
-    var edge: Edge = .all
-    @State var offCentre: Bool = false
-    var colour: Color = Color.accentColor
+    public var edge: Edge = .all
+    @State public var offCentre: Bool = false
+    public var colour: Color = OnlyAppColours.onlyLogoPurple
     
     let UIBackground = UIColor.systemBackground
     
