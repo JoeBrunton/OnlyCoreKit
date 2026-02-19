@@ -11,13 +11,13 @@ import SwiftUI
 /// Exposure of palette colours from OnlyPalette.xcassets
 public enum OnlyAppColours {
     
-    public static let onlyPaletteBackground = Color("onlyPaletteBackground", bundle: .module)
-    public static let onlyPaletteError = Color("onlyPaletteError", bundle: .module)
-    public static let onlyPaletteLabel = Color("onlyPaletteLabel", bundle: .module)
-    public static let onlyPaletteSuccess = Color("onlyPaletteSuccess", bundle: .module)
-    public static let onlyLogoBlue = Color("onlyLogoBlue", bundle: .module)
-    public static let onlyLogoPurple = Color("onlyLogoPurple", bundle: .module)
-    public static let onlyLogoRed = Color("onlyLogoRed", bundle: .module)
-    public static let onlyLogoYellow = Color("onlyLogoYellow", bundle: .module)
+    public static var onlyPaletteBackground: Color { Color("onlyPaletteBackground", bundle: .module) }
+    public static var onlyPaletteError: Color { Color("onlyPaletteError", bundle: .module) }
+    public static var onlyPaletteLabel: Color { Color("onlyPaletteLabel", bundle: .module) }
+    public static var onlyPaletteSuccess: Color { Color("onlyPaletteSuccess", bundle: .module) }
+    public static var onlyLogoBlue: Color { Color("onlyLogoBlue", bundle: .module) }
+    public static var onlyLogoPurple: Color { Color("onlyLogoPurple", bundle: .module) }
+    public static var onlyLogoRed: Color { Color("onlyLogoRed", bundle: .module) }
+    public static var onlyLogoYellow: Color { Color("onlyLogoYellow", bundle: .module) }
     
 }

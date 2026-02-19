@@ -21,14 +21,18 @@ public enum Edge {
 /// It uses this to create fading colours at the top, bottom or both edges of the screen.
 ///
 /// The offCentre bool allows for a leading focused top fade,
-/// it is labelled @State to allow for more granular control over location
+/// it is a @Binding variable to allow for more granular control over location
 ///
 public struct BlurView: View {
     
-    public init() {}
+    public init(edge: Edge, colour: Color, offCentre: Binding<Bool>) {
+        self.edge = edge
+        self.colour = colour
+        self._offCentre = offCentre
+    }
     
     public var edge: Edge = .all
-    @State public var offCentre: Bool = false
+    @Binding public var offCentre: Bool
     public var colour: Color = OnlyAppColours.onlyLogoPurple
     
     let UIBackground = UIColor.systemBackground
@@ -99,5 +103,9 @@ struct TopView: View {
 }
 
 #Preview {
-    BlurView()
+    @Previewable @State var bool: Bool = false
+    BlurView(edge: .all, colour: OnlyAppColours.onlyLogoPurple, offCentre: $bool)
+        .onTapGesture {
+            bool.toggle()
+        }
 }
