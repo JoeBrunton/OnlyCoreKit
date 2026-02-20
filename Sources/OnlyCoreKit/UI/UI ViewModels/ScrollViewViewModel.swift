@@ -11,6 +11,10 @@ import SwiftUI
 public class ScrollViewViewModel {
     private var lastOffset: CGFloat = 0.0
     
+    public init() {
+        self.lastOffset = 0.0
+    }
+    
     public func handleScrollBlur(offsetY: CGFloat, phase: ScrollPhase) -> Bool {
         if phase == .interacting {
             lastOffset = offsetY
