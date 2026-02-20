@@ -12,7 +12,7 @@ public class ScrollViewViewModel {
     private var lastOffset: CGFloat = 0.0
     
     public init() {
-        self.lastOffset = 0.0
+        self.lastOffset = -60.0
     }
     
     public func handleScrollBlur(offsetY: CGFloat, phase: ScrollPhase) -> Bool {
