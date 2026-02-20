@@ -17,6 +17,7 @@ public struct ReuseButtonView: View {
     private var width: CGFloat = CGFloat.infinity
     private var height: CGFloat = 60
     private var padding: CGFloat = 18
+    private var opacity: Double = 1
     
     public init(text: String,
                 image: Image? = nil,
@@ -25,7 +26,8 @@ public struct ReuseButtonView: View {
                 backColour: Color = OnlyAppColours.onlyPaletteSuccess,
                 width: CGFloat = CGFloat.infinity,
                 height: CGFloat = 60,
-                padding: CGFloat = 18) {
+                padding: CGFloat = 18,
+                opacity: Double = 1) {
         self.text = text
         self.image = image
         self.isCentre = isCentre
@@ -34,6 +36,7 @@ public struct ReuseButtonView: View {
         self.width = width
         self.height = height
         self.padding = padding
+        self.opacity = opacity
     }
     
     
@@ -56,7 +59,7 @@ public struct ReuseButtonView: View {
             }
         }
         .frame(maxWidth: width, maxHeight: height)
-        .background(backColour)
+        .background(backColour.opacity(opacity))
         .clipShape(.buttonBorder)
         .padding(padding)
     }
