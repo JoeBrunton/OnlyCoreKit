@@ -98,7 +98,7 @@ struct TopView: View {
         ],
                        startPoint: offCentre ? .topLeading : .top,
                        endPoint: offCentre ? .bottomTrailing : .bottom)
-        .frame(height: offCentre ? .infinity : 150)
+        .frame(maxHeight: offCentre ? .infinity : 150)
     }
 }
 
