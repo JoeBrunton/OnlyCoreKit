@@ -53,7 +53,7 @@ public struct ReuseButtonView: View {
             
             Text(text)
                 .padding(image != nil ? [.vertical, .trailing] : .all)
-                .foregroundStyle(.white)
+                .foregroundStyle(foreColour)
             
             if !isCentre {
                 Spacer()
