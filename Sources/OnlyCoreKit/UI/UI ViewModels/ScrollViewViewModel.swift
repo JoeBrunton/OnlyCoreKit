@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ScrollViewViewModel.swift
 //  OnlyCoreKit
 //
 //  Created by Joe Brunton on 20/02/2026.
@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-class ScrollViewViewModel {
-    private var lastOffset: CGFloat = -60.0
+public class ScrollViewViewModel {
+    private var lastOffset: CGFloat = 0.0
     
-    func handleScrollBlur(offsetY: CGFloat, phase: ScrollPhase) -> Bool {
+    public func handleScrollBlur(offsetY: CGFloat, phase: ScrollPhase) -> Bool {
         if phase == .interacting {
             lastOffset = offsetY
         }
