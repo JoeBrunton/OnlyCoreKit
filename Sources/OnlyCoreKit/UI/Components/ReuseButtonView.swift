@@ -45,6 +45,7 @@ public struct ReuseButtonView: View {
             if let image = image {
                 image
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
                     .padding(.leading, isCentre ? 18 : 25)
                     .padding(.trailing, 8)
