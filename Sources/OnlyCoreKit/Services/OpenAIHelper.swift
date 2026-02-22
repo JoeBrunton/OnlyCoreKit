@@ -8,17 +8,22 @@
 import Foundation
 
 public struct ChatMessage: Codable {
+    public init(role: OpenAIMessageRole, content: String) {
+        self.role = role
+        self.content = content
+    }
+    
     let role: OpenAIMessageRole
     let content: String
 }
 
-public struct ChatRequest: Codable {
+struct ChatRequest: Codable {
     let model: String
     let messages: [ChatMessage]
     let temperature: Double?
 }
 
-public struct ChatResponse: Codable {
+struct ChatResponse: Codable {
     struct Choice: Codable {
         let message: ChatMessage
     }
