@@ -7,13 +7,36 @@
 
 import SwiftUI
 
+/// Reusable button view
+///
+/// This view contains several parameters for the customisation of the button.
+/// This includes:
+///
+/// text: String?
+///
+/// image: Image?
+///
+/// isCenter: Bool (which defaults to true, pushing content to centre and pushes content left when false)
+///
+/// foreColour: Color (defaults to background colour)
+///
+/// backColour: Color (defaults to green)
+///
+/// width: CGFloat (defaults to infinity)
+///
+/// height: CGFloat (defaults to 60)
+///
+/// padding: CGFloat (defaults to 18 and refers to padding around button)
+///
+/// opacity: Double (defaults to 1)
+///
 public struct ReuseButtonView: View {
     
     private var text: String? = nil
     private var bold: Bool = false
     private var image: Image? = nil
     private var isCentre: Bool = true
-    private var foreColour: Color = .white
+    private var foreColour: Color = OnlyAppColours.onlyPaletteBackground
     private var backColour: Color = OnlyAppColours.onlyPaletteSuccess
     private var width: CGFloat = CGFloat.infinity
     private var height: CGFloat = 60
@@ -24,7 +47,7 @@ public struct ReuseButtonView: View {
                 bold: Bool = false,
                 image: Image? = nil,
                 isCentre: Bool = true,
-                foreColour: Color = Color.white,
+                foreColour: Color = OnlyAppColours.onlyPaletteBackground,
                 backColour: Color = OnlyAppColours.onlyPaletteSuccess,
                 width: CGFloat = CGFloat.infinity,
                 height: CGFloat = 60,
@@ -53,7 +76,7 @@ public struct ReuseButtonView: View {
                     .padding(.leading, text == nil
                              ? isCentre ? 0 : 25
                              : isCentre ? 18 : 25)
-                    .padding(.trailing, 8)
+                    .padding(.trailing, text == nil ? 0 : 8)
             }
             
             if let t = text {
