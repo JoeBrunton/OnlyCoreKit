@@ -9,7 +9,8 @@ import SwiftUI
 
 public struct ReuseButtonView: View {
     
-    private var text: String = "Push Me"
+    private var text: String? = nil
+    private var bold: Bool = false
     private var image: Image? = nil
     private var isCentre: Bool = true
     private var foreColour: Color = .white
@@ -19,7 +20,8 @@ public struct ReuseButtonView: View {
     private var padding: CGFloat = 18
     private var opacity: Double = 1
     
-    public init(text: String,
+    public init(text: String? = nil,
+                bold: Bool = false,
                 image: Image? = nil,
                 isCentre: Bool = true,
                 foreColour: Color = Color.white,
@@ -29,6 +31,7 @@ public struct ReuseButtonView: View {
                 padding: CGFloat = 18,
                 opacity: Double = 1) {
         self.text = text
+        self.bold = bold
         self.image = image
         self.isCentre = isCentre
         self.foreColour = foreColour
@@ -47,13 +50,18 @@ public struct ReuseButtonView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
-                    .padding(.leading, isCentre ? 18 : 25)
+                    .padding(.leading, text == nil
+                             ? isCentre ? 0 : 25
+                             : isCentre ? 18 : 25)
                     .padding(.trailing, 8)
             }
             
-            Text(text)
-                .padding(image != nil ? [.vertical, .trailing] : .all)
-                .foregroundStyle(foreColour)
+            if let t = text {
+                Text(t)
+                    .bold(bold)
+                    .padding(image != nil ? [.vertical, .trailing] : .all)
+                    .foregroundStyle(foreColour)
+            }
             
             if !isCentre {
                 Spacer()
@@ -67,5 +75,5 @@ public struct ReuseButtonView: View {
 }
 
 #Preview {
-    ReuseButtonView(text: "Push Me", image: LOGOs.onlyDefaultLogo, isCentre: false)
+    ReuseButtonView(text: "push", image: LOGOs.onlyDefaultLogo, isCentre: false)
 }
