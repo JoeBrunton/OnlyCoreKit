@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ChatMessage: Codable {
-    let role: OpenAIMessageRole.RawValue
+    let role: OpenAIMessageRole
     let content: String
 }
 
@@ -31,7 +31,7 @@ public enum OpenAIModel: String {
     case mini = "gpt-4.1-mini"
 }
 
-public enum OpenAIMessageRole: String {
+public enum OpenAIMessageRole: String, Codable {
     case system = "system"
     case user = "user"
     case assistant = "assistant"
