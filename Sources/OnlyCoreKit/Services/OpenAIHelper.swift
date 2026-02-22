@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct ChatMessage: Codable {
+public struct ChatMessage: Codable {
     let role: OpenAIMessageRole.RawValue
     let content: String
 }
 
-struct ChatRequest: Codable {
+public struct ChatRequest: Codable {
     let model: String
     let messages: [ChatMessage]
     let temperature: Double?
 }
 
-struct ChatResponse: Codable {
+public struct ChatResponse: Codable {
     struct Choice: Codable {
         let message: ChatMessage
     }
@@ -26,30 +26,30 @@ struct ChatResponse: Codable {
     let choices: [Choice]
 }
 
-enum OpenAIModel: String {
+public enum OpenAIModel: String {
     case nano = "gpt-4.1-nano"
     case mini = "gpt-4.1-mini"
 }
 
-enum OpenAIMessageRole: String {
+public enum OpenAIMessageRole: String {
     case system = "system"
     case user = "user"
     case assistant = "assistant"
 }
 
 
-public class OpenAIHelper {
+final public class OpenAIHelper {
     
     private let apiKey: String
     private let model: OpenAIModel
     private let baseURL = URL(string: "https://api.openai.com/v1/chat/completions")!
 
-    init(apiKey: String, model: OpenAIModel) {
+    public init(apiKey: String, model: OpenAIModel) {
         self.apiKey = apiKey
         self.model = model
     }
 
-    func sendChat<T: Decodable>(messages: [ChatMessage], model: OpenAIModel, temperature: Double? = nil) async throws -> T {
+    public func sendChat<T: Decodable>(messages: [ChatMessage], model: OpenAIModel, temperature: Double? = nil) async throws -> T {
 
         let requestBody = ChatRequest(
             model: model.rawValue,
