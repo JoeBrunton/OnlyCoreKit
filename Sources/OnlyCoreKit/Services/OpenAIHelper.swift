@@ -54,7 +54,7 @@ final public class OpenAIHelper {
         self.model = model
     }
 
-    public func sendChat<T: Decodable>(messages: [ChatMessage], model: OpenAIModel, temperature: Double? = nil) async throws -> T {
+    public func sendChat<T: Codable>(messages: [ChatMessage], model: OpenAIModel, temperature: Double? = nil) async throws -> T {
 
         let requestBody = ChatRequest(
             model: model.rawValue,
@@ -69,15 +69,20 @@ final public class OpenAIHelper {
         request.httpBody = try JSONEncoder().encode(requestBody)
 
         let (data, _) = try await URLSession.shared.data(for: request)
-
+        
+        
         let decoded = try JSONDecoder().decode(ChatResponse.self, from: data)
-
+        
         guard let content = decoded.choices.first?.message.content,
               let jsonData = content.data(using: .utf8)
         else {
+            print("❌ OPENAIHELPER: BAD SERVER RESPONSE")
             throw URLError(.badServerResponse)
         }
         
-        return try JSONDecoder().decode(T.self, from: jsonData)
+        let type = try JSONDecoder().decode(T.self, from: jsonData)
+        print(type)
+        return type
+        
     }
 }
