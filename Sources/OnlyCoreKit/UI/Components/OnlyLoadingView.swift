@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-
-/// Custom Loading Spinner
+/// Custom loading spinner
 ///
-/// Uses the Only logo with spinning components
+///  - Parameters:
+///     - scale: `Double`: sets the scale of the entire view - defaults to 1
+///
 public struct OnlyLoadingView: View {
     
     private var scale: Double

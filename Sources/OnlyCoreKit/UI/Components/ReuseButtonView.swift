@@ -9,26 +9,29 @@ import SwiftUI
 
 /// Reusable button view
 ///
-/// This view contains several parameters for the customisation of the button.
-/// This includes:
+/// - Parameters:
+///     - text: `String`? the text to be displayed on the button - defaults to nil
+///     - bold: `Bool`: a tag to determine whether button text should be bold - defaults to false
+///     - image: `Image`? an optional image to include in the button - defaults to nil
+///     - isCenter: `Bool`: a tag to determine where content should be placed in button view - defaults to true, pushing content to centre and pushes content leading when false
+///     - foreColour: `Color`: the foreground colour of the button - defaults to background colour
+///     - backColour: `Color`: the background colour of the button - defaults to green
+///     - width: `CGFloat`: the width of the button - defaults to infinity
+///     - height: `CGFloat`: the height of the button - defaults to 60
+///     - padding: `CGFloat`:  the padding around the button - defaults to 18
+///     - opacity: `Double`: The opacity of the button background - defaults to 1
 ///
-/// text: String?
+/// ## Usage
 ///
-/// image: Image?
-///
-/// isCenter: Bool (which defaults to true, pushing content to centre and pushes content left when false)
-///
-/// foreColour: Color (defaults to background colour)
-///
-/// backColour: Color (defaults to green)
-///
-/// width: CGFloat (defaults to infinity)
-///
-/// height: CGFloat (defaults to 60)
-///
-/// padding: CGFloat (defaults to 18 and refers to padding around button)
-///
-/// opacity: Double (defaults to 1)
+/// ``` swift
+///Button {
+///// sign in logic
+///} label: {
+///ReuseButtonView(text: "Sign in with Apple",
+///                image: LOGOs.AppleDark,
+///                isCentre: false)
+///}
+/// ```
 ///
 public struct ReuseButtonView: View {
     

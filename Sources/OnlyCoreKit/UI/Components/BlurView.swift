@@ -8,32 +8,47 @@
 import SwiftUI
 import UIKit
 
+
+/// Centralised reference for the Edge of the screen to be used by the BlurView
 public enum Edge {
     case top
     case bottom
     case all
 }
 
-/// Blurred Colour View
+/// Blurred Colour View that uses this to create fading colours at the top, bottom or both edges of the screen.
 ///
-/// Takes in an edge and colour parameter.
+/// - Parameters:
+///     - edge: `Edge`: the placement of the blur view
+///     - colour:  `Color`: the colour of the blur view
+///     - offCentre: `Binding<Bool>`: The offCentre bool allows for a leading focused top fade, it is a `Binding` variable to allow for more granular control over location - defaults to false
 ///
-/// It uses this to create fading colours at the top, bottom or both edges of the screen.
+/// ## Usage
+/// Use as the base of a `ZStack` to create a blurred colour background
 ///
-/// The offCentre bool allows for a leading focused top fade,
-/// it is a @Binding variable to allow for more granular control over location
+/// ``` swift
+///ZStack {
+///     BlurView(edge:,
+///             colour:,
+///
+///}
+/// ```
+///
+/// - Note: the offCentre variable is intended for use with a scroll view phase change
 ///
 public struct BlurView: View {
     
-    public init(edge: Edge, colour: Color, offCentre: Binding<Bool>) {
+    public init(edge: Edge,
+                colour: Color,
+                offCentre: Binding<Bool> = .constant(false)) {
         self.edge = edge
         self.colour = colour
         self._offCentre = offCentre
     }
     
-    public var edge: Edge = .all
-    @Binding public var offCentre: Bool
-    public var colour: Color = OnlyAppColours.onlyLogoPurple
+    private var edge: Edge = .all
+    @Binding private var offCentre: Bool
+    private var colour: Color = OnlyAppColours.onlyLogoPurple
     
     let UIBackground = UIColor.systemBackground
     
@@ -85,22 +100,25 @@ public struct BlurView: View {
 
 /// Extraction of top view with passed colour and binding off centre parameter
 struct TopView: View {
+
+    internal init(colour: Color = .accentColor, offCentre: Binding<Bool> = .constant(false)) {
+        self.colour = colour
+        self._offCentre = offCentre
+    }
     
-    var colour: Color = .accentColor
-    @Binding var offCentre: Bool
+    
+    private var colour: Color = .accentColor
+    @Binding private var offCentre: Bool
     
     var body: some View {
         
-        LinearGradient(colors: [
-            colour,
-            colour.opacity(0.5),
-                .clear
-        ],
+        LinearGradient(colors: [colour, colour.opacity(0.5), .clear],
                        startPoint: offCentre ? .topLeading : .top,
                        endPoint: offCentre ? .bottomTrailing : .bottom)
         .frame(maxHeight: offCentre ? .infinity : 150)
     }
 }
+
 
 #Preview {
     @Previewable @State var bool: Bool = false

@@ -19,4 +19,5 @@ public enum LOGOs {
     public static let snapchat = Image("snapchat", bundle: .module)
     public static let spotify = Image("spotify", bundle: .module)
     public static let whatsapp = Image("whatsapp", bundle: .module)
+    
 }

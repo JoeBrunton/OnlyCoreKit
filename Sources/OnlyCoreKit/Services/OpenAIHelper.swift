@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// A lightweight helper responsible for sending chat completion requests to the OpenAI API
 /// and decoding structured responses.
 ///
