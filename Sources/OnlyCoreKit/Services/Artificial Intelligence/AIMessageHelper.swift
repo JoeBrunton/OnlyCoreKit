@@ -23,6 +23,11 @@ import Foundation
 public struct ChatMessage: Codable {
     let role: OpenAIMessageRole
     let content: String
+    
+    public init(role: OpenAIMessageRole, content: String) {
+        self.role = role
+        self.content = content
+    }
 }
 
 /// The structure of the request to be sent to the AI API
@@ -51,6 +56,12 @@ struct ChatRequest: Codable {
     let model: String
     let messages: [ChatMessage]
     let temperature: Double?
+    
+    public init(model: String, messages: [ChatMessage], temperature: Double?) {
+        self.model = model
+        self.messages = messages
+        self.temperature = temperature
+    }
 }
 
 /// The response structure from the API call
@@ -75,9 +86,17 @@ struct ChatRequest: Codable {
 struct ChatResponse: Codable {
     struct Choice: Codable {
         let message: ChatMessage
+        
+        public init(message: ChatMessage) {
+            self.message = message
+        }
     }
 
     let choices: [Choice]
+    
+    public init(choices: [Choice]) {
+        self.choices = choices
+    }
 }
 
 /// Centralised AI model string reference enum
