@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// Exposure of palette colours from ProgressPalette.xcassets
-public enum ProgressColours {
+public enum ProgressPalette {
     
     public static var progressBlack: Color { Color("ProgressBlack", bundle: .module) }
     public static var progressBrown: Color { Color("ProgressBrown", bundle: .module) }

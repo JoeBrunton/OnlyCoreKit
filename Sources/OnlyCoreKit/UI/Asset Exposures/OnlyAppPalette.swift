@@ -1,5 +1,5 @@
 //
-//  OnlyAppColours.swift
+//  OnlyAppPalette.swift (Formally OnlyAppColours.swift)
 //  OnlyCoreKit
 //
 //  Created by Joe Brunton on 08/02/2026.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// Exposure of palette colours from OnlyPalette.xcassets
-public enum OnlyAppColours {
+public enum OnlyAppPalette{
     
     public static var onlyPaletteBackground: Color { Color("onlyPaletteBackground", bundle: .module) }
     public static var onlyPaletteError: Color { Color("onlyPaletteError", bundle: .module) }
