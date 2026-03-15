@@ -20,8 +20,8 @@ public enum MessagePosition {
 ///     - text: `String`: the message to be displayed
 ///     - position: ``MessagePosition``: the position in the `HStack` - left or right
 ///     - opacity: `Binding<Double?>`: the opacity of the background of the message - defaults to 1.0
-///     - textColour: `Color`: the text colour - defaults to `OnlyAppColours.onlyPaletteLabel`
-///     - backColour: `Color`: the background colour of the message - defaults to `OnlyAppColours.onlyPaletteBackground`
+///     - textColour: `Color`: the text colour - defaults to `OnlyAppPalette.onlyPaletteLabel`
+///     - backColour: `Color`: the background colour of the message - defaults to `OnlyAppPalette.onlyPaletteBackground`
 ///     - radius: `CGFloat`: the corner radius of the background of the message - defaults to 12
 ///     - shadow: `CGFloat`: the shadow of the background of the message - defaults to 0
 ///     - isLoading: `Bool`: tag to show if the message is currently loading - defaults to false
@@ -54,8 +54,8 @@ public struct MessageView: View {
     public init(text: String = "",
                 position: MessagePosition,
                 opacity: Binding<Double> = .constant(1.0),
-                textColour: Color = OnlyAppColours.onlyPaletteLabel,
-                backColour: Color = OnlyAppColours.onlyPaletteBackground,
+                textColour: Color = OnlyAppPalette.onlyPaletteLabel,
+                backColour: Color = OnlyAppPalette.onlyPaletteBackground,
                 radius: CGFloat = 12,
                 shadow: CGFloat = 0,
                 isLoading: Bool = false) {

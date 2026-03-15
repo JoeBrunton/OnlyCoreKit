@@ -39,8 +39,8 @@ public struct ReuseButtonView: View {
     private var bold: Bool = false
     private var image: Image? = nil
     private var isCentre: Bool = true
-    private var foreColour: Color = OnlyAppColours.onlyPaletteBackground
-    private var backColour: Color = OnlyAppColours.onlyPaletteSuccess
+    private var foreColour: Color = OnlyAppPalette.onlyPaletteBackground
+    private var backColour: Color = OnlyAppPalette.onlyPaletteSuccess
     private var width: CGFloat = CGFloat.infinity
     private var height: CGFloat = 60
     private var padding: CGFloat = 18
@@ -50,8 +50,8 @@ public struct ReuseButtonView: View {
                 bold: Bool = false,
                 image: Image? = nil,
                 isCentre: Bool = true,
-                foreColour: Color = OnlyAppColours.onlyPaletteBackground,
-                backColour: Color = OnlyAppColours.onlyPaletteSuccess,
+                foreColour: Color = OnlyAppPalette.onlyPaletteBackground,
+                backColour: Color = OnlyAppPalette.onlyPaletteSuccess,
                 width: CGFloat = CGFloat.infinity,
                 height: CGFloat = 60,
                 padding: CGFloat = 18,

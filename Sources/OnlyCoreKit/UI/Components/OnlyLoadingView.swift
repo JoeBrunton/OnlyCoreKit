@@ -29,11 +29,11 @@ public struct OnlyLoadingView: View {
             RoundedRectangle(cornerRadius: 5)
                 .rotation(Angle(degrees: 300))
                 .frame(width: 5 * scale, height: 50 * scale)
-                .foregroundStyle(OnlyAppColours.onlyLogoYellow)
+                .foregroundStyle(OnlyAppPalette.onlyLogoYellow)
             
             Circle()
                 .trim(from: 0, to: 0.85)
-                .stroke(OnlyAppColours.onlyLogoRed, lineWidth: 5 * scale)
+                .stroke(OnlyAppPalette.onlyLogoRed, lineWidth: 5 * scale)
                 .frame(width: 50 * scale, height: 50 * scale)
                 .rotationEffect(Angle(degrees: isRotating ? 360 : 0))
                 .animation(
@@ -48,23 +48,23 @@ public struct OnlyLoadingView: View {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 5 * scale, height: 40 * scale)
                 .offset(y: 5 * scale)
-                .foregroundStyle(OnlyAppColours.onlyLogoBlue)
+                .foregroundStyle(OnlyAppPalette.onlyLogoBlue)
             
             RoundedRectangle(cornerRadius: 5)
                 .rotation(Angle(degrees: 300))
                 .offset(x: -9 * scale, y: -18 * scale)
                 .frame(width: 5 * scale, height: 20 * scale)
-                .foregroundStyle(OnlyAppColours.onlyLogoBlue)
+                .foregroundStyle(OnlyAppPalette.onlyLogoBlue)
             
             RoundedRectangle(cornerRadius: 5)
                 .rotation(Angle(degrees: 60))
                 .offset(x: 9 * scale, y: -18 * scale)
                 .frame(width: 5 * scale, height: 20 * scale)
-                .foregroundStyle(OnlyAppColours.onlyLogoBlue)
+                .foregroundStyle(OnlyAppPalette.onlyLogoBlue)
             
             RoundedRectangle(cornerRadius: 15 * scale)
                 .rotation(Angle(degrees: 45))
-                .stroke(OnlyAppColours.onlyLogoPurple, lineWidth: 5 * scale)
+                .stroke(OnlyAppPalette.onlyLogoPurple, lineWidth: 5 * scale)
                 .frame(width: 60 * scale, height: 60 * scale)
                 .rotationEffect(Angle(degrees: isRotating ? -360 : 0))
                 .animation(

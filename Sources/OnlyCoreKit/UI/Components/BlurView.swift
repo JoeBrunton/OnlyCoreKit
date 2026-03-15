@@ -48,7 +48,7 @@ public struct BlurView: View {
     
     private var edge: Edge = .all
     @Binding private var offCentre: Bool
-    private var colour: Color = OnlyAppColours.onlyLogoPurple
+    private var colour: Color = OnlyAppPalette.onlyLogoPurple
     
     let UIBackground = UIColor.systemBackground
     
@@ -122,7 +122,7 @@ struct TopView: View {
 
 #Preview {
     @Previewable @State var bool: Bool = false
-    BlurView(edge: .all, colour: OnlyAppColours.onlyLogoPurple, offCentre: $bool)
+    BlurView(edge: .all, colour: OnlyAppPalette.onlyLogoPurple, offCentre: $bool)
         .onTapGesture {
             bool.toggle()
         }
