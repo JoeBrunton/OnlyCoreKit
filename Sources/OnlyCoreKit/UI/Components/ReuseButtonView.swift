@@ -33,14 +33,14 @@ import SwiftUI
 ///}
 /// ```
 ///
-public struct ReuseButtonView: View {
+public struct ReuseButtonView<Background: ShapeStyle>: View {
     
     private var text: String? = nil
     private var bold: Bool = false
     private var image: Image? = nil
     private var isCentre: Bool = true
     private var foreColour: Color = OnlyAppPalette.onlyPaletteBackground
-    private var backColour: Color = OnlyAppPalette.onlyPaletteSuccess
+    private var backColour: Background
     private var width: CGFloat = CGFloat.infinity
     private var height: CGFloat = 60
     private var padding: CGFloat = 18
@@ -51,7 +51,7 @@ public struct ReuseButtonView: View {
                 image: Image? = nil,
                 isCentre: Bool = true,
                 foreColour: Color = OnlyAppPalette.onlyPaletteBackground,
-                backColour: Color = OnlyAppPalette.onlyPaletteSuccess,
+                backColour: Background = OnlyAppPalette.onlyPaletteSuccess,
                 width: CGFloat = CGFloat.infinity,
                 height: CGFloat = 60,
                 padding: CGFloat = 18,
@@ -85,6 +85,7 @@ public struct ReuseButtonView: View {
             if let t = text {
                 Text(t)
                     .bold(bold)
+                    .minimumScaleFactor(0.4)
                     .padding(image != nil ? [.vertical, .trailing] : .all)
                     .foregroundStyle(foreColour)
             }
