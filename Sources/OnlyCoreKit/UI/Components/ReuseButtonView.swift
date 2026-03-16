@@ -15,22 +15,33 @@ import SwiftUI
 ///     - image: `Image`? an optional image to include in the button - defaults to nil
 ///     - isCenter: `Bool`: a tag to determine where content should be placed in button view - defaults to true, pushing content to centre and pushes content leading when false
 ///     - foreColour: `Color`: the foreground colour of the button - defaults to background colour
-///     - backColour: `Color`: the background colour of the button - defaults to green
+///     - backColour: `Background -> ShapeStyle`: the background style of the button - defaults to green but can be a linear gradient
 ///     - width: `CGFloat`: the width of the button - defaults to infinity
 ///     - height: `CGFloat`: the height of the button - defaults to 60
 ///     - padding: `CGFloat`:  the padding around the button - defaults to 18
 ///     - opacity: `Double`: The opacity of the button background - defaults to 1
+///     - borderColour: `Color`: The colour of the overlay Rectangle stroke - defaults to `OnlyAppPalette.label`
+///     - borderWidth: `CGFloat`: The width of the overlay Rectangle stroke - defaults to 0
 ///
 /// ## Usage
 ///
 /// ``` swift
 ///Button {
-///// sign in logic
+/// // sign in logic
 ///} label: {
-///ReuseButtonView(text: "Sign in with Apple",
-///                image: LOGOs.AppleDark,
-///                isCentre: false)
+/// ReuseButtonView(text: "Sign in with Apple",
+///                    image: LOGOs.AppleDark,
+///                    isCentre: false)
 ///}
+/// ```
+///
+/// when toggling selection:
+/// ``` swift
+///Button {
+/// selection.toggle()
+///} label: {
+///ReuseButtonView(...
+///                 borderWidth: selection ? 2 : 0)
 /// ```
 ///
 public struct ReuseButtonView<Background: ShapeStyle>: View {
@@ -45,6 +56,8 @@ public struct ReuseButtonView<Background: ShapeStyle>: View {
     private var height: CGFloat = 60
     private var padding: CGFloat = 18
     private var opacity: Double = 1
+    private var borderColour: Color
+    private var borderWidth: CGFloat
     
     public init(text: String? = nil,
                 bold: Bool = false,
@@ -55,7 +68,9 @@ public struct ReuseButtonView<Background: ShapeStyle>: View {
                 width: CGFloat = CGFloat.infinity,
                 height: CGFloat = 60,
                 padding: CGFloat = 18,
-                opacity: Double = 1) {
+                opacity: Double = 1,
+                borderColour: Color = OnlyAppPalette.onlyPaletteLabel,
+                borderWidth: CGFloat = 0) {
         self.text = text
         self.bold = bold
         self.image = image
@@ -66,6 +81,8 @@ public struct ReuseButtonView<Background: ShapeStyle>: View {
         self.height = height
         self.padding = padding
         self.opacity = opacity
+        self.borderColour = borderColour
+        self.borderWidth = borderWidth
     }
     
     
@@ -94,6 +111,11 @@ public struct ReuseButtonView<Background: ShapeStyle>: View {
                 Spacer()
             }
         }
+        .overlay(content: {
+            Rectangle()
+                .stroke(borderColour, lineWidth: borderWidth)
+                .clipShape(.buttonBorder)
+        })
         .frame(maxWidth: width, maxHeight: height)
         .background(backColour.opacity(opacity))
         .clipShape(.buttonBorder)
