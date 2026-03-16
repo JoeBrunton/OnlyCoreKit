@@ -113,12 +113,12 @@ public struct ReuseButtonView<Background: ShapeStyle>: View {
         }
         .frame(maxWidth: width, maxHeight: height)
         .background(backColour.opacity(opacity))
+        .clipShape(.buttonBorder)
         .overlay(content: {
             Rectangle()
                 .stroke(borderColour, lineWidth: borderWidth)
                 .clipShape(.buttonBorder)
         })
-        .clipShape(.buttonBorder)
         .padding(padding)
     }
 }
