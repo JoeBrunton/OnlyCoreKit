@@ -24,7 +24,7 @@ import Foundation
 /// let helper = OpenAIHelper(apiKey: "YOUR_API_KEY", model: .gpt41nano)
 /// let result: MyResponse = try await helper.sendChat(
 ///     messages: messages,
-///     model: .gpt41nano
+///     model: self.model
 /// )
 /// ```
 ///
@@ -65,14 +65,12 @@ final public class OpenAIHelper {
     ///
     /// let joke: Joke = try await helper.sendChat(
     ///     messages: messages,
-    ///     model: .gpt4,
     ///     temperature: 0.7
     /// )
     /// ```
     ///
     /// - Parameters:
     ///   - messages: The conversation history to send to the model.
-    ///   - model: The OpenAI model to use for the completion.
     ///   - temperature: An optional sampling temperature. Higher values produce more
     ///     creative responses; lower values produce more deterministic output.
     ///
@@ -84,10 +82,10 @@ final public class OpenAIHelper {
     ///
     /// - Important: The model’s response must be valid UTF-8 encoded JSON matching `T`.
     ///   If the response contains plain text or malformed JSON, decoding will fail.
-    public func sendChat<T: Codable>(messages: [ChatMessage], model: OpenAIModel, temperature: Double? = nil) async throws -> T {
+    public func sendChat<T: Codable>(messages: [ChatMessage], temperature: Double? = nil) async throws -> T {
 
         let requestBody = ChatRequest(
-            model: model.rawValue,
+            model: self.model.rawValue,
             messages: messages,
             temperature: temperature
         )

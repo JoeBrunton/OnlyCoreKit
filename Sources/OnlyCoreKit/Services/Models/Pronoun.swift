@@ -63,7 +63,7 @@ public struct Pronoun: Identifiable, Sendable, Codable {
     
     public static let sheHer = Pronoun(
         pronoun: "She / Her",
-        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.lightGray),
+        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.white),
         backgroundRGB: Utilities.HexRGBFromColor(ProgressPalette.progressPink))
     public static let theyThem = Pronoun(
         pronoun: "They / Them",
@@ -83,18 +83,18 @@ public struct Pronoun: Identifiable, Sendable, Codable {
         backgroundRGB: Utilities.HexRGBFromColor(ProgressPalette.progressLightBlue))
     public static let zeZim = Pronoun(
         pronoun: "Ze / Zim",
-        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.lightGray),
+        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.white),
         backgroundRGB: Utilities.HexRGBFromColor(ProgressPalette.progressGreen))
     public static let xeXim = Pronoun(
         pronoun: "Xe / Xim",
-        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.lightGray),
+        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.gray),
         backgroundRGB: Utilities.HexRGBFromColor(ProgressPalette.progressYellow))
     public static let verVis = Pronoun(
         pronoun: "Ver / Vis",
-        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.lightGray),
+        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.white),
         backgroundRGB: Utilities.HexRGBFromColor(ProgressPalette.progressOrange))
     public static let teTer = Pronoun(
         pronoun: "Te / Ter",
-        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.lightGray),
+        foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.white),
         backgroundRGB: Utilities.HexRGBFromColor(ProgressPalette.progressPurple))
 }

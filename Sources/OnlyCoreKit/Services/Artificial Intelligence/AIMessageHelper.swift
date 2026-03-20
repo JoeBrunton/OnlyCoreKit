@@ -21,8 +21,8 @@ import Foundation
 /// ```
 ///
 public struct ChatMessage: Codable {
-    let role: OpenAIMessageRole
-    let content: String
+    public let role: OpenAIMessageRole
+    public let content: String
     
     public init(role: OpenAIMessageRole, content: String) {
         self.role = role
@@ -53,9 +53,9 @@ public struct ChatMessage: Codable {
 /// ```
 ///
 struct ChatRequest: Codable {
-    let model: String
-    let messages: [ChatMessage]
-    let temperature: Double?
+    public let model: String
+    public let messages: [ChatMessage]
+    public let temperature: Double?
     
     public init(model: String, messages: [ChatMessage], temperature: Double?) {
         self.model = model
@@ -92,7 +92,7 @@ struct ChatResponse: Codable {
         }
     }
 
-    let choices: [Choice]
+    public let choices: [Choice]
     
     public init(choices: [Choice]) {
         self.choices = choices
@@ -105,7 +105,7 @@ struct ChatResponse: Codable {
 ///     - nano: GPT-4.1 nano excels at instruction following and tool calling. It features a 1M token context window, and low latency without a reasoning step.
 ///     - mini: GPT-4.1 mini excels at instruction following and tool calling. It features a 1M token context window, and low latency without a reasoning step.
 ///     - fiveMini: GPT-5 mini is a faster, more cost-efficient version of GPT-5. It's great for well-defined tasks and precise prompts.
-public enum OpenAIModel: String {
+public enum OpenAIModel: String, Codable {
     case gpt41nano = "gpt-4.1-nano"
     case gpt41mini = "gpt-4.1-mini"
     case gpt5mini = "gpt-5-mini"

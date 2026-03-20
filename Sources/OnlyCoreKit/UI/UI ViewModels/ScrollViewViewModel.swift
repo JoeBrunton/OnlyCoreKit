@@ -8,8 +8,28 @@
 import Foundation
 import SwiftUI
 
+/// A custom view model for handling scroll view dependent logic
+///
+/// - Parameters:
+///     - lastOffset: `CGOffset`
+///
+/// ## Usage
+///
+/// `handleScrollBlur`: Intended to monitor the position of the scroll view and adjust the blur background accordingly.
+/// Doesn't work super well at the moment.
+/// ``` swift
+///.onScrollPhaseChange { oldPhase, newPhase, context in
+/// withAnimation {
+///     scrolling = svvm.handleScrollBlur(offsetY: context.geometry.contentOffset.y,
+///                                       phase: newPhase)
+///     }
+///     // scrolling can now be used in the $offCentre variable of BlurView
+///}
+/// ```
+///
+///
 public class ScrollViewViewModel {
-    private var lastOffset: CGFloat = 0.0
+    private var lastOffset: CGFloat
     
     public init() {
         self.lastOffset = -60.0

@@ -78,4 +78,23 @@ public struct Utilities {
         let uiColor = UIColor(color)
         return HexRGBFromUIColor(uiColor)
     }
+    
+    
+    /// Calculates the current age of an object e.g. User from a `Date`
+    /// - Parameter dob: "Date of Birth"
+    /// - Returns: an `Int` representing the age of the object
+    public static func age(from dob: Date) -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+
+        let years = calendar.dateComponents([.year], from: dob, to: now).year ?? 0
+
+        let birthdayThisYear = calendar.date(
+            bySetting: .year,
+            value: calendar.component(.year, from: now),
+            of: dob
+        ) ?? dob
+
+        return now >= birthdayThisYear ? years : years - 1
+    }
 }

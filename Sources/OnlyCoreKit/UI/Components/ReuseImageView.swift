@@ -43,14 +43,14 @@ public struct ReuseImageView: View {
     }
     
     
-    public var imageName: String
-    public var width: CGFloat = 100
-    public var height: CGFloat = 100
-    public var radius: CGFloat = 15
-    public var shadow: CGFloat = 0
-    public var aspect: ContentMode = .fill
-    public var borderColour: Color?
-    public var borderWidth: CGFloat?
+    private var imageName: String
+    private var width: CGFloat = 100
+    private var height: CGFloat = 100
+    private var radius: CGFloat = 15
+    private var shadow: CGFloat = 0
+    private var aspect: ContentMode = .fill
+    private var borderColour: Color?
+    private var borderWidth: CGFloat?
     
     public var body: some View {
         Image(imageName)
