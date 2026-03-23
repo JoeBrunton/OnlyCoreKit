@@ -55,10 +55,10 @@ package struct UserImageView: View {
     @ViewBuilder
     private var content: some View {
         switch image {
-        case .assetImage(let image) :
-                image
-                    .resizable()
-                    .scaledToFill()
+//        case .assetImage(let image) :
+//                image
+//                    .resizable()
+//                    .scaledToFill()
         case .url(let string):
             if let url = URL(string: string) {
                 AsyncImage(url: url) { phase in
