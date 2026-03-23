@@ -10,8 +10,8 @@ import SwiftUI
 
 
 /// A collection of potential forms a user image can take
-public enum UserImage {
-    case assetImage(Image)
+public enum UserImage: Codable, Sendable {
+//    case assetImage(Image) // DOESN'T CONFORM TO CODABLE
     case url(String)
     case data(Data)
 }
