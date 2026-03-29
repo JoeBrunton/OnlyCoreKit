@@ -8,6 +8,22 @@
 import SwiftUI
 import PhotosUI
 
+struct UserGroupBoxStyle: GroupBoxStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading) {
+            configuration.label
+            configuration.content
+        }
+        .padding()
+        .background(.thinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+}
+
+extension GroupBoxStyle where Self == UserGroupBoxStyle {
+    static var user: UserGroupBoxStyle { .init() }
+}
+
 /// A reusable view for displaying and editing user information.
 ///
 /// `UserInformationView` presents a user's profile details inside a `GroupBox`.
@@ -41,13 +57,13 @@ public struct UserInformationView: View {
     public init(user: any UserProtocol, onSave: @escaping (UserUpdateRequest) async throws -> Void = { _ in }) {
         _vm = State(wrappedValue: ViewModel(user: user, onSave: onSave))
     }
-
+    
     @State private var vm: ViewModel
     
     public var body: some View {
         GroupBox {
             HStack(alignment: .top) {
-                                
+                
                 UserImageView(image: vm.userImage,
                               size: 90,
                               blur: $vm.isEditing)
@@ -151,6 +167,7 @@ public struct UserInformationView: View {
                 }.padding(.top, 20)
             }
         }
+        .groupBoxStyle(.user)
         .onTapGesture {
             withAnimation(.bouncy) {
                 vm.isEditing = true

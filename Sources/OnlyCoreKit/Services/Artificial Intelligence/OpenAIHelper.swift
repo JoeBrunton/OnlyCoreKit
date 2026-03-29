@@ -108,7 +108,7 @@ final public class OpenAIHelper {
         }
         
         let type = try JSONDecoder().decode(T.self, from: jsonData)
-        print(type)
+        
         return type
         
     }
