@@ -12,6 +12,7 @@ import SwiftUI
 public enum LOGOs {
     
     public static let onlyDefaultLogo = Image("OnlyLogoDefault", bundle: .module)
+    public static let onlyLogoTransparent = Image("OnlyLogoTransparent", bundle: .module)
     public static let appleLight = Image("Apple_logo_grey", bundle: .module)
     public static let appleDark = Image("Apple_logo_black", bundle: .module)
     public static let google = Image("Google", bundle: .module)

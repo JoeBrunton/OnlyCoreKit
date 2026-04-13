@@ -60,7 +60,10 @@ public struct Pronoun: Identifiable, Sendable, Codable {
     public var foregroundRGB: UInt
     public var backgroundRGB: UInt
     
-    
+    public static let none = Pronoun(
+        pronoun: "none",
+        foregroundRGB: Utilities.HexRGBFromColor(.black),
+        backgroundRGB: Utilities.HexRGBFromColor(.gray.opacity(0.7)))
     public static let sheHer = Pronoun(
         pronoun: "She / Her",
         foregroundRGB: Utilities.HexRGBFromUIColor(UIColor.white),
