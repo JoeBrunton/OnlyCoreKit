@@ -11,4 +11,5 @@ public enum AlertType {
     case actionOnly
     case cancelOnly
     case actionAndCancel
+    case destructive
 }

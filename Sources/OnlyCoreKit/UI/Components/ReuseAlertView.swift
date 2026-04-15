@@ -37,6 +37,7 @@ public struct ReuseAlertView: View {
     private var isLogoShown: Bool
     private var onAction: (String?) -> Void
     private var onCancel: () -> Void
+    private var okayButtonText: String
     
     @State var userInput: String = ""
     
@@ -44,12 +45,14 @@ public struct ReuseAlertView: View {
                 height: CGFloat = 400,
                 isLogoShown: Bool = true,
                 onAction: @escaping (String?) -> Void = { _ in },
-                onCancel: @escaping () -> Void = { }) {
+                onCancel: @escaping () -> Void = { },
+                okayButtonText: String = "okay") {
         self.alert = alert
         self.height = height
         self.isLogoShown = isLogoShown
         self.onAction = onAction
         self.onCancel = onCancel
+        self.okayButtonText = okayButtonText
     }
     
     public var body: some View {
@@ -90,7 +93,7 @@ public struct ReuseAlertView: View {
                         ? onAction(nil)
                         : onAction(userInput)
                     } label: {
-                        ReuseButtonView(text: "okay",
+                        ReuseButtonView(text: self.okayButtonText,
                                         bold: true,
                                         foreColour: .white,
                                         backColour: OnlyAppPalette.onlyPaletteSuccess,)
@@ -107,23 +110,46 @@ public struct ReuseAlertView: View {
                 case .actionAndCancel:
                     HStack(spacing: 0) {
                         Button {
+                            onCancel()
+                        } label: {
+                            ReuseButtonView(text: "cancel",
+                                            bold: true,
+                                            foreColour: .white,
+                                            backColour: OnlyAppPalette.onlyPaletteSuccess,
+                                            padding: 5)
+                        }
+                        Button {
                             alert.userInputPlaceholder == nil
                             ? onAction(nil)
                             : onAction(userInput)
                         } label: {
-                            ReuseButtonView(text: "cancel",
+                            ReuseButtonView(text: self.okayButtonText,
                                             bold: true,
                                             foreColour: .white,
                                             backColour: OnlyAppPalette.onlyPaletteError,
                                             padding: 5)
                         }
+                    }
+                case .destructive:
+                    HStack(spacing: 0) {
                         Button {
                             onCancel()
                         } label: {
-                            ReuseButtonView(text: "okay",
+                            ReuseButtonView(text: "cancel",
+                                            bold: true,
+                                            foreColour: .black.opacity(0.6),
+                                            backColour: .thinMaterial,
+                                            padding: 5)
+                        }
+                        Button {
+                            alert.userInputPlaceholder == nil
+                            ? onAction(nil)
+                            : onAction(userInput)
+                        } label: {
+                            ReuseButtonView(text: "delete",
                                             bold: true,
                                             foreColour: .white,
-                                            backColour: OnlyAppPalette.onlyPaletteSuccess,
+                                            backColour: OnlyAppPalette.onlyPaletteError,
                                             padding: 5)
                         }
                     }
