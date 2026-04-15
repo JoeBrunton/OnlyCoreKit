@@ -59,7 +59,7 @@ public struct ReuseAlertView: View {
         ZStack {
             Color(.lightGray)
                 .ignoresSafeArea()
-                .opacity(0.4)
+                .blur(radius: 5)
             VStack {
                 Text(alert.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
