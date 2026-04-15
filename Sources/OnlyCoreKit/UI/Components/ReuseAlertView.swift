@@ -57,9 +57,10 @@ public struct ReuseAlertView: View {
     
     public var body: some View {
         ZStack {
-            Color(.clear)
+            Rectangle()
+                .background(.ultraThinMaterial)
                 .ignoresSafeArea()
-                .blur(radius: 10)
+                
             VStack {
                 Text(alert.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
