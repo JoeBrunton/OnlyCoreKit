@@ -60,6 +60,7 @@ public struct ReuseAlertView: View {
             Rectangle()
                 .background(.ultraThinMaterial)
                 .ignoresSafeArea()
+                .opacity(0.7)
                 
             VStack {
                 Text(alert.title)
