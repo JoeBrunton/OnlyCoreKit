@@ -58,7 +58,9 @@ public struct MessageView: View {
                 backColour: Color = OnlyAppPalette.onlyPaletteBackground,
                 radius: CGFloat = 12,
                 shadow: CGFloat = 0,
-                isLoading: Bool = false) {
+                isLoading: Bool = false,
+                isRead: Bool = false,
+                timestamp: Date) {
         self.text = text
         self.position = position
         self._opacity = opacity
@@ -67,6 +69,8 @@ public struct MessageView: View {
         self.radius = radius
         self.shadow = shadow
         self.isLoading = text.isEmpty || isLoading
+        self.isRead = isRead
+        self.timestamp = timestamp
     }
     
     private var text: String
@@ -77,6 +81,8 @@ public struct MessageView: View {
     private var radius: CGFloat
     private var shadow: CGFloat
     private var isLoading: Bool
+    private var isRead: Bool
+    private var timestamp: Date
     
     @State private var bounce: Bool = false
     
@@ -86,17 +92,38 @@ public struct MessageView: View {
                 Spacer()
             }
                         
-            Text(isLoading ? "..." : text)
-                .foregroundStyle(textColour)
-                .font(.subheadline)
-                .padding()
-                .background {
-                    RoundedRectangle(cornerRadius: radius)
-                        .foregroundStyle(backColour)
-                        .opacity(opacity)
-                        .shadow(radius: shadow)
+            
+            HStack(alignment: .bottom) {
+                if position == .left {
+                    VStack {
+//                        TicksView(isRead: isRead)
+                        Text(timestamp.timeString)
+                            .font(.subheadline)
+                            .fontWeight(.ultraLight)
+                    }
                 }
-                .frame(maxWidth: 300, alignment: position == .left ? .leading : .trailing)
+                
+                Text(isLoading ? "..." : text)
+                    .foregroundStyle(textColour)
+                    .font(.subheadline)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: radius)
+                            .foregroundStyle(backColour)
+                            .opacity(opacity)
+                            .shadow(radius: shadow)
+                    }
+                    .frame(maxWidth: 300, alignment: position == .left ? .leading : .trailing)
+                
+                if position == .right {
+                    VStack {
+                        TicksView(isRead: isRead)
+                        Text(timestamp.timeString)
+                            .font(.subheadline)
+                            .fontWeight(.ultraLight)
+                    }
+                }
+            }
             
             
             if position == .left {
@@ -112,13 +139,35 @@ public struct MessageView: View {
             }
         }
     }
+    
+    struct TicksView: View {
+        
+        var isRead: Bool = false
+        
+        var body: some View {
+            if isRead {
+                Image(systemName: "checkmark.message.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20)
+                    .foregroundStyle(OnlyAppPalette.onlyLogoBlue)
+            } else {
+                Image(systemName: "checkmark.message")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20)
+                    .foregroundStyle(OnlyAppPalette.onlyLogoBlue)
+            }
+        }
+    }
 }
 
 #Preview {
     
     MessageView(text: "hi",
                 position: .left,
-                shadow: 5)
+                shadow: 5,
+                timestamp: Date())
     .padding(.horizontal)
     
 }
